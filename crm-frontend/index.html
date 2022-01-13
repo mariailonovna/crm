@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="preload" href="fonts/opensans-bold-webfont.woff" as="font">
+  <link rel="preload" href="fonts/opensans-bold-webfont.woff2" as="font">
+  <link rel="preload" href="fonts/opensans-regular-webfont.woff" as="font">
+  <link rel="preload" href="fonts/opensans-regular-webfont.woff2" as="font">
+  <link rel="preload" href="fonts/opensans-semibold-webfont.woff" as="font">
+  <link rel="preload" href="fonts/opensans-semibold-webfont.woff2" as="font">
+
+  <script defer src="script/choices.min.js"></script>
+  <script defer src="script/inputmask.min.js"></script>
+  <script defer src="script/just-validate.min.js"></script>
+  <script defer src="script/main.js"></script>
+  <link rel="stylesheet" href="style/choices.min.css">
+  <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="header__container">
+      <a href="#" class="header__logo"><img src="img/logo.svg" alt="Логотип skb"></a>
+      <input type="text" class="header__search" placeholder="Введите запрос" id="searchClients">
+    </div>
+  </div>
+  <div class="main main-container">
+    <h1 class="zero-indent main__head">Клиенты</h1>
+    <div class="table-container">
+      <table class="main__table">
+        <thead class="table-head">
+          <tr>
+            <th class="th-id">
+              <button class="table-head__item table-head__item--btn" id="sortById">
+                ID
+                <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="table-head__sort table-head__sort--id">
+                  <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                </svg>
+              </button>
+            </th>
+            <th>
+              <button class="table-head__item table-head__item--btn " id="sortByName">
+                Фамилия Имя Отчество
+                <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="table-head__sort table-head__sort--name">
+                  <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                </svg>
+                <span class="table-head__name-sort">А-Я</span>
+              </button>
+            </th>
+            <th>
+              <button class="table-head__item table-head__item--date table-head__item--btn" id="sortByCreatedDate">
+                Дата и время создания
+                <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="table-head__sort table-head__sort--created">
+                  <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                </svg>
+              </button>
+            </th>
+            <th>
+              <button class="table-head__item table-head__item--date table-head__item--btn" id="sortByLastUpdate">
+                Последние изменения
+                <svg width="8" height="8" viewbox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg" class="table-head__sort table-head__sort--updated">
+                  <path d="M8 4L7.295 3.295L4.5 6.085L4.5 0L3.5 0L3.5 6.085L0.71 3.29L0 4L4 8L8 4Z" fill="#9873FF"/>
+                </svg>
+              </button>
+            </th>
+            <th>
+              <span class="table-head__item">
+                Контакты
+              </span>
+            </th>
+            <th colspan="3">
+              <span class="table-head__item table-head__item--last">
+                Действия
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+        </tbody>
+      </table>
+    </div>
+    <div class="main__load-table">
+      <svg width="80" height="80" viewbox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="main__load-table-icon">
+        <path d="M4.00025 40.0005C4.00025 59.8825 20.1182 76.0005 40.0002 76.0005C59.8822 76.0005 76.0002 59.8825 76.0002 40.0005C76.0002 20.1185 59.8823 4.00049 40.0003 4.00049C35.3513 4.00048 30.9082 4.88148 26.8282 6.48648" stroke="#9873FF" stroke-width="8" stroke-miterlimit="10" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <button class="btn-1 add-client-btn" id="addClientBtn">
+      <svg width="23" height="16" viewbx="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="add-client-icon">
+        <path d="M14.5 8C16.71 8 18.5 6.21 18.5 4C18.5 1.79 16.71 0 14.5 0C12.29 0 10.5 1.79 10.5 4C10.5 6.21 12.29 8 14.5 8ZM5.5 6V3H3.5V6H0.5V8H3.5V11H5.5V8H8.5V6H5.5ZM14.5 10C11.83 10 6.5 11.34 6.5 14V16H22.5V14C22.5 11.34 17.17 10 14.5 10Z" fill="#9873FF"/>
+      </svg>
+      Добавить клиента
+    </button>
+  </div>
+
+  <div class="client-modal add-client-modal" id="addClientModal">
+    <div class="client-modal__container">
+      <h2 class="zero-indent client-modal__head">Новый клиент</h2>
+      <button class="client-modal__close" id="closeAddClientModal">
+        <svg width="17" height="17" viewbox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="client-modal__close-icon">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2333 1.73333L15.2666 0.766664L8.49991 7.53336L1.73324 0.766696L0.766576 1.73336L7.53324 8.50003L0.766603 15.2667L1.73327 16.2333L8.49991 9.46669L15.2666 16.2334L16.2332 15.2667L9.46657 8.50003L16.2333 1.73333Z" fill="#B0B0B0"/>
+        </svg>
+      </button>
+      <form class="client-modal__form" id="addClientForm">
+        <div class="client-modal__first-block">
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Фамилия<span class="client-modal__label-star">*</span></span>
+            <input type="text" class="client-modal__input client-modal__input--surname client-modal__input--required" id="addClientSurname">
+          </label>
+
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Имя<span class="client-modal__label-star">*</span></span>
+            <input type="text" class="client-modal__input client-modal__input--name client-modal__input--required" id="addClientName">
+          </label>
+
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Отчество</span>
+            <input type="text" class="client-modal__input client-modal__input--middlename" id="addClientMiddlename">
+          </label>
+
+        </div>
+        <div class="client-modal__second-block">
+          <div class="client-modal__contact-container"></div>
+          <button type="button" class="client-modal__contact-btn" id="addClientContactsBtn">
+            <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="client-modal__contact-icon">
+              <path d="M7.00001 3.66665C6.63334 3.66665 6.33334 3.96665 6.33334 4.33331V6.33331H4.33334C3.96668 6.33331 3.66668 6.63331 3.66668 6.99998C3.66668 7.36665 3.96668 7.66665 4.33334 7.66665H6.33334V9.66665C6.33334 10.0333 6.63334 10.3333 7.00001 10.3333C7.36668 10.3333 7.66668 10.0333 7.66668 9.66665V7.66665H9.66668C10.0333 7.66665 10.3333 7.36665 10.3333 6.99998C10.3333 6.63331 10.0333 6.33331 9.66668 6.33331H7.66668V4.33331C7.66668 3.96665 7.36668 3.66665 7.00001 3.66665ZM7.00001 0.333313C3.32001 0.333313 0.333344 3.31998 0.333344 6.99998C0.333344 10.68 3.32001 13.6666 7.00001 13.6666C10.68 13.6666 13.6667 10.68 13.6667 6.99998C13.6667 3.31998 10.68 0.333313 7.00001 0.333313ZM7.00001 12.3333C4.06001 12.3333 1.66668 9.93998 1.66668 6.99998C1.66668 4.05998 4.06001 1.66665 7.00001 1.66665C9.94001 1.66665 12.3333 4.05998 12.3333 6.99998C12.3333 9.93998 9.94001 12.3333 7.00001 12.3333Z" fill="#9873FF"/>
+            </svg>
+            Добавить контакт
+          </button>
+        </div>
+        <div class="client-modal__error" id="clientModalError"></div>
+        <div class="client-modal__third-block">
+          <button type="submit" class="btn-2 client-modal__submit">Сохранить</button>
+          <button type="button" id="cancelAddClientModal" class="client-modal__cancel">Отмена</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="client-modal edit-client-modal" id="editClientModal">
+    <div class="client-modal__container">
+      <h2 class="zero-indent client-modal__head">Изменить данные <span class="edit-client-modal__id">ID: </span><span class="edit-client-modal__id" id="editModalId"></span> </h2>
+      <button class="client-modal__close" id="closeEditClientModal">
+        <svg width="17" height="17" viewbox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg" class="client-modal__close-icon">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2333 1.73333L15.2666 0.766664L8.49991 7.53336L1.73324 0.766696L0.766576 1.73336L7.53324 8.50003L0.766603 15.2667L1.73327 16.2333L8.49991 9.46669L15.2666 16.2334L16.2332 15.2667L9.46657 8.50003L16.2333 1.73333Z" fill="#B0B0B0"/>
+        </svg>
+      </button>
+      <form class="client-modal__form" id="editClientForm">
+        <div class="client-modal__first-block">
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Фамилия<span class="client-modal__label-star">*</span></span>
+            <input type="text" class="client-modal__input client-modal__input--surname client-modal__input--required">
+          </label>
+
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Имя<span class="client-modal__label-star">*</span></span>
+            <input type="text" class="client-modal__input client-modal__input--name client-modal__input--required">
+          </label>
+
+          <label class="client-modal__label" for="addClientSurname">
+            <span class="client-modal__label-text">Отчество</span>
+            <input type="text" class="client-modal__input client-modal__input--middlename">
+          </label>
+
+        </div>
+        <div class="client-modal__second-block">
+          <div class="client-modal__contact-container"></div>
+          <button type="button" class="client-modal__contact-btn client-modal__contact-btn--edit">
+            <svg width="14" height="14" viewbox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="client-modal__contact-icon">
+              <path d="M7.00001 3.66665C6.63334 3.66665 6.33334 3.96665 6.33334 4.33331V6.33331H4.33334C3.96668 6.33331 3.66668 6.63331 3.66668 6.99998C3.66668 7.36665 3.96668 7.66665 4.33334 7.66665H6.33334V9.66665C6.33334 10.0333 6.63334 10.3333 7.00001 10.3333C7.36668 10.3333 7.66668 10.0333 7.66668 9.66665V7.66665H9.66668C10.0333 7.66665 10.3333 7.36665 10.3333 6.99998C10.3333 6.63331 10.0333 6.33331 9.66668 6.33331H7.66668V4.33331C7.66668 3.96665 7.36668 3.66665 7.00001 3.66665ZM7.00001 0.333313C3.32001 0.333313 0.333344 3.31998 0.333344 6.99998C0.333344 10.68 3.32001 13.6666 7.00001 13.6666C10.68 13.6666 13.6667 10.68 13.6667 6.99998C13.6667 3.31998 10.68 0.333313 7.00001 0.333313ZM7.00001 12.3333C4.06001 12.3333 1.66668 9.93998 1.66668 6.99998C1.66668 4.05998 4.06001 1.66665 7.00001 1.66665C9.94001 1.66665 12.3333 4.05998 12.3333 6.99998C12.3333 9.93998 9.94001 12.3333 7.00001 12.3333Z" fill="#9873FF"/>
+            </svg>
+            Добавить контакт
+          </button>
+        </div>
+        <div class="client-modal__third-block">
+          <div class="client-modal__error"></div>
+          <button type="submit" class="btn-2 client-modal__submit">Сохранить</button>
+          <button type="button" class="client-modal__cancel" id="editModalDeleteClient">Удалить клиента</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

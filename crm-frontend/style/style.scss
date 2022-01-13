@@ -1,0 +1,1084 @@
+@import '_variables.scss';
+
+@font-face {
+  font-family: 'Opensans';
+  font-display: swap;
+  src: local('OpensansBold'), local('opensans-bold'),
+    url('../fonts/opensans-bold-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Opensans';
+  font-display: swap;
+  src: local('OpensansRegular'), local('opensans-regular'),
+    url('../fonts/opensans-regular-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Opensans';
+  font-display: swap;
+  src: local('OpensansSemibold'), local('opensans-semibold'),
+    url('../fonts/opensans-semibold-webfont.woff2') format('woff2'),
+    url('../fonts/opensans-semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'Opensans', sans-serif;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  background-color: $bg_grey;
+  color: $black;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+table {
+  border: none;
+  border-spacing: 0;
+}
+
+.zero-indent {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.btn-1 {
+  display: flex;
+  align-items: center;
+  border: 1px solid $firm;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: $firm;
+  font-family: 'Opensans', sans-serif;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.btn-2 {
+  display: flex;
+  align-items: center;
+  background-color: $firm;
+  color: $white;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  font-family: 'Opensans', sans-serif;
+  transition: background-color .2s ease;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+// Hovers
+
+@media (min-width: 1025px) {
+  .btn-1:hover {
+    color: $white;
+    background-color: $firm_light;
+  }
+
+  .btn-2:hover {
+    background-color: $firm_light;
+  }
+
+  .add-client-btn:hover .add-client-icon path {
+    fill: $white;
+  }
+
+  .table-body__edit:hover {
+    color: $firm;
+  }
+
+  .table-body__delete:hover {
+    color: $red;
+  }
+
+  .table-head__item--btn:hover {
+    color: $black;
+  }
+
+  .client-modal__cancel:hover {
+    color: $firm;
+  }
+
+  .client-modal__contact-btn:hover {
+    color: $firm;
+  }
+
+  .add-contact-form__delete-btn:hover {
+    border: 1px solid $red;
+    .add-contact-form__delete-icon path {
+      fill: $red;
+    }
+  }
+
+  .client-modal__close:hover .client-modal__close-icon path {
+    fill: $firm;
+  }
+
+  .choices__list--dropdown .choices__item--selectable.is-highlighted {
+    background-color: transparent;
+    color: $firm;
+  }
+
+  .contact-tooltip__btn:hover .contact-tooltip__frame {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .contact-tooltip__btn:hover {
+    .contact-tooltip__icon {
+      opacity: 1;
+    }
+  }
+
+  .show-more-contacts:hover {
+    background-color: lighten($firm, 5%);
+    color: $white;
+  }
+
+  .contact-tooltip__txt--contact:hover {
+    color: $white;
+  }
+}
+
+@keyframes loadAnimation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.btn-1:active {
+  color: white;
+  background-color: $firm_dark;
+}
+
+.btn-1:focus-visible {
+  color: white;
+  background-color: $firm_light;
+}
+
+.btn-2:active {
+  background-color: $firm_dark;
+}
+
+.btn-2:focus-visible {
+  background-color: $firm_light;
+}
+
+.header {
+  width: 100%;
+  background-color: $white;
+  box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+  margin-bottom: 41px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    max-width: 1366px;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  &__logo {
+    display: block;
+    width: max-content;
+    height: 50px;
+    margin-right: 53px;
+  }
+
+  &__search {
+    width: 581px;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    border-radius: 0;
+    color: $black;
+    padding: 13px 16px;
+    font-size: 14px;
+
+    &::placeholder {
+      font-size: 14px;
+      line-height: 19px;
+      color: $txt_grey;
+      font-family: 'Opensans', sans-serif;
+    }
+  }
+}
+
+
+.main-container {
+  position: relative;
+  max-width: 1226px;
+  padding: 0 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  &__head {
+    font-size: 24px;
+    line-height: 33px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  &__table {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+.table-head {
+  &__item {
+    font-size: 12px;
+    line-height: 16px;
+    color: $txt_grey;
+    font-weight: 400;
+    padding: 8px 10px 8px 0;
+    font-family: 'Opensans', sans-serif;
+
+    &--btn {
+      transition: color .2s ease;
+
+      &:active {
+        color: $firm;
+      }
+
+      &:focus-visible {
+        color: $firm;
+      }
+    }
+  }
+
+  &__sort {
+    width: 8px;
+    height: 8px;
+  }
+
+  &__name-sort {
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 14px;
+    color: $firm;
+  }
+
+  th {
+    text-align: left;
+  }
+
+}
+
+.table-body {
+  background-color: $white;
+
+  &__edit {
+    background: url(../img/edit.svg) no-repeat;
+    background-size: 12px;
+    background-position: 0 40%;
+    padding-left: 14px;
+    font-family: 'Opensans', sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: $black;
+    margin-right: 30px;
+    transition: color .2s ease;
+
+    &:active {
+      color: $firm_dark;
+    }
+
+    &:focus-visible {
+      color: $firm;
+    }
+  }
+
+  &__delete {
+    background: url(../img/delete.svg) no-repeat;
+    background-size: 12px;
+    background-position: 0 50%;
+    padding-left: 15px;
+    font-family: 'Opensans', sans-serif;
+    font-size: 14px;
+    line-height: 19px;
+    color: $black;
+    transition: color .2s ease;
+
+    &:active {
+      color: darken($red, 15%);
+    }
+
+    &:focus-visible {
+      color: $red;
+    }
+  }
+
+  &__item {
+    font-size: 14px;
+    line-height: 19px;
+    padding: 0 10px 0 0;
+    height: 60px;
+    margin-right: 20px;
+
+    &--contacts {
+      width: 147px;
+    }
+
+    &--id {
+      padding-left: 20px;
+      min-width: 85px;
+    }
+
+    // &--edit {
+    //   text-align: right;
+    //   padding-right: 20px;
+    // }
+
+  }
+
+  &__id {
+    font-size: 12px;
+    line-height: 16px;
+    color: $txt_grey;
+  }
+
+  &__time {
+    color: $txt_grey;
+    padding-left: 7px;
+  }
+
+  &__row {
+    td {
+      border-bottom: 1px solid $grey;
+    }
+  }
+}
+
+.main__load-table {
+  position: absolute;
+  display: flex;
+  // display: none;
+  align-items: center;
+  justify-content: center;
+  top: 85px;
+  width: calc(100% - 40px);
+  height: 300px;
+  background-color: $white;
+}
+
+.main__load-table-icon {
+  animation: loadAnimation 2s normal linear infinite;
+}
+
+
+.add-client-btn {
+  align-self: center;
+  padding: 11px 27px;
+
+  &:active .add-client-icon path {
+    fill: $white;
+  }
+
+  &:focus-visible .add-client-icon path {
+    fill: $white;
+  }
+}
+
+.add-client-icon {
+  margin-right: 10px;
+  path {
+    transition: fill .2s ease;
+  }
+}
+
+.th-id {
+  padding-left: 20px;
+}
+
+
+// Add client modal
+
+
+
+.client-modal {
+  position: fixed;
+  // display: flex;
+  display: none;
+  // align-items: center;
+  // justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($black, .5);
+  transition: opacity .3s ease;
+
+  &__head {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    padding: 0 30px;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    min-height: 396px;
+    background-color: $white;
+    padding: 25px 0;
+    margin: 30px auto;
+  }
+
+  &__first-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    margin-bottom: 26px;
+  }
+
+  &__second-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+    background-color: rgba($grey, .2);
+    margin-bottom: 25px;
+  }
+
+  &__third-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    position: relative;
+    width: 100%;
+    padding: 6px 0;
+    border: none;
+    border-bottom: 1px solid $grey;
+    margin-bottom: 28px;
+    z-index: 30;
+    background-color: transparent;
+    color: $black;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+
+    &--middlename {
+      margin-bottom: 0;
+    }
+
+    // &::placeholder {
+    //   font-size: 14px;
+    //   line-height: 19px;
+    //   color: $txt_grey;
+    // }
+  }
+
+  &__contact-btn {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    width: max-content;
+    padding: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    font-family: 'Opensans', sans-serif;
+    transition: color .2s ease;
+
+    &:active {
+      color: $firm_dark;
+    }
+
+    &:focus-visible {
+      color: $firm;
+    }
+  }
+
+  &__contact-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__contact-icon {
+    margin-right: 4px;
+  }
+
+  &__submit {
+    align-self: center;
+    padding: 13px 35px;
+    margin-bottom: 5px;
+  }
+
+  &__cancel {
+    align-self: center;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: 'Opensans', sans-serif;
+    font-weight: 400;
+    text-decoration: underline;
+    transition: color .2s ease;
+
+    &:active {
+      color: $firm_dark;
+    }
+
+    &:focus-visible {
+      color: $firm;
+    }
+  }
+}
+
+.client-modal__close:active .client-modal__close-icon path {
+  fill: $firm_dark;
+}
+
+.client-modal__close:focus-visible .client-modal__close-icon path {
+  fill: $firm;
+}
+
+.client-modal__close:focus-visible .client-modal__close-icon path {
+  transition: fill .2s ease;
+}
+
+.edit-client-modal__id {
+  font-size: 12px;
+  line-height: 16px;
+  color: $txt_grey;
+  font-weight: 400;
+}
+
+.add-contact-form {
+  display: flex;
+  width: 100%;
+  height: 37px;
+  margin-bottom: 25px;
+}
+
+.client-modal__second-block--active {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.choices {
+  width: 123px;
+  margin-bottom: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: $dark_grey;
+  border: 1px solid $grey;
+}
+
+.choices__inner {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  min-height: auto;
+  height: 100%;
+  padding: 10px 12px;
+}
+
+.choices[data-type*=select-one]:after {
+  display: none;
+}
+
+.choices__item.is-selected {
+  display: none;
+}
+
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 0;
+}
+
+.choices__list--single {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  width: 100%;
+}
+
+.choices__list--single::after {
+  content: '';
+  position: absolute;
+  height: 6px;
+  width: 6px;
+  border-bottom: 1px solid $firm;
+  border-left: 1px solid $firm;
+  transform: rotate(-45deg);
+  right: 3px;
+  bottom: 3px;
+  transition: transform .2s ease, bottom .2s ease, border-bottom .2s ease, border-left .2s ease;
+}
+
+.choices__list--dropdown {
+  z-index: 1;
+  background-color: $light_grey;
+  border: 1px solid $grey;
+  top: calc(100% + 1px);
+  left: -1px;
+  margin-top: 0;
+  width: calc(100% + 2px);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top: none;
+  padding: 10px 12px;
+}
+
+@media (min-width: 640px) {
+  .choices__list--dropdown .choices__item--selectable {
+    padding-right: 0;
+  }
+}
+
+.choices__list--dropdown .choices__item {
+  position: relative;
+  padding: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: $black;
+
+  &:not(:last-child) {
+    margin-bottom: 9px;
+  }
+}
+
+
+.add-contact-form__input {
+  width: 241px;
+  border: none;
+  background-color: transparent;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: $black;
+  border-top: 1px solid $grey;
+  border-bottom: 1px solid $grey;
+}
+
+.add-contact-form__delete-btn {
+  width: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $grey;
+  background-color: $dark_grey;
+  transition: border .2s ease;
+
+  &:active {
+    border: 1px solid darken($red, 15%);
+    .add-contact-form__delete-icon path {
+      fill: darken($red, 15%);
+    }
+  }
+
+  &:focus {
+    border: 1px solid $red;
+    .add-contact-form__delete-icon path {
+      fill: $red;
+    }
+  }
+}
+
+.add-contact-form__delete-icon path {
+  transition: fill .2s ease;
+  pointer-events: none;
+}
+
+.delete-client-modal__container {
+  min-height: 215px;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.delete-client-modal__head {
+  margin-bottom: 11px;
+}
+
+.delete-client-modal__text {
+  max-width: 275px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+
+// Adaptive1024
+
+@media (min-width: 1001px) and (max-width: 1150px) {
+
+  .table-head__item--date {
+    max-width: 95px;
+  }
+
+  .main__head {
+    margin-bottom: 8px;
+  }
+
+  .table-head__item {
+    padding-bottom: 4px;
+  }
+
+  .table-body__item--name {
+    width: 231px;
+    padding-right: 15px;
+  }
+}
+
+// Adaptive768
+
+@media (max-width: 1000px) {
+
+
+  .table-body__item--created {
+    width: 92px;
+    padding-right: 40px;
+  }
+
+  .table-body__time {
+    padding-left: 0;
+    display: block;
+  }
+
+  .table-head__item--date {
+    text-align: left;
+  }
+
+  .main__head {
+    margin-bottom: 8px;
+  }
+
+  .table-body__item--contacts {
+    width: 118px;
+  }
+
+  .table-head__item {
+    padding-bottom: 4px;
+  }
+
+  .table-body__edit {
+    display: block;
+    margin-right: 0;
+    margin-bottom: 7px;
+  }
+
+  .table-body__delete {
+    display: block;
+    margin-right: 0;
+  }
+
+  .table-body__item--edit {
+    width: 85px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .main__table {
+    width: 710px;
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .header__search {
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .header__search {
+   display: none;
+  }
+
+  .header__container {
+    justify-content: center;
+  }
+
+  .header__logo {
+    margin-right: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  .header__container {
+    padding: 8px;
+  }
+
+  .main__head {
+    font-size: 18px;
+  }
+
+  .client-modal {
+
+    &__head {
+      padding: 0 15px;
+    }
+
+    &__container {
+      width: 300px;
+      min-height: 400px;
+    }
+
+    &__first-block {
+      padding: 0 15px;
+    }
+
+    &__second-block {
+      padding: 0 15px;
+    }
+
+    &__third-block {
+      padding: 0 15px;
+    }
+
+    &__close {
+      top: 10px;
+      right: 10px;
+    }
+  }
+
+  .choices {
+    width: 110px;
+  }
+
+  .add-contact-form__input {
+    width: 132px;
+  }
+
+}
+
+
+.error-field {
+  border-bottom: 1px solid $red;
+}
+
+.client-modal__error {
+  max-width: 255px;
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+  line-height: 14px;
+  color: $red;
+  margin-bottom: 9px;
+  margin-top: -10px;
+}
+
+
+.add-contact-form__input--empty {
+  width: calc(100% - 123px);
+  border-right: 1px solid $grey;
+}
+
+.error-input {
+  background-color: lighten($red, 33%);
+}
+
+.contact-tooltip__btn {
+  position: relative;
+  margin-right: 7px;
+  height: 16px;
+  width: 16px;
+
+  &:focus {
+    .contact-tooltip__icon {
+      opacity: 1;
+    }
+
+  }
+}
+
+.contact-tooltip__frame {
+  position: absolute;
+  max-width: 170px;
+  width: max-content;
+  top: -70%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+
+.contact-tooltip__content {
+  position: relative;
+  // display: block;
+  display: flex;
+  flex-direction: column;
+  background-color: $black;
+  text-align: center;
+  padding: 7px 14px;
+  line-height: 100%;
+
+  &::after {
+    content: '';
+    position: absolute;
+    border: 12px solid transparent;
+    border-top: 14px solid $black;
+    transform: translateX(-50%) translateY(80%);
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+  }
+}
+
+.contact-tooltip__txt {
+  color: $white;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  margin: 0;
+  position: relative;
+  z-index: 4;
+}
+
+.contact-tooltip__txt--contact {
+  color: $firm_light;
+  transition: color .2s ease;
+}
+
+.contact-tooltip__btn:focus .contact-tooltip__frame {
+  visibility: visible;
+  opacity: 1;
+}
+
+.contact-tooltip__icon {
+  border-radius: 100%;
+  vertical-align: middle;
+  opacity: .7;
+  transition: opacity .2s ease;
+}
+
+.table-head__sort {
+  transition: transform .2s ease;
+}
+
+.table-head__sort--active {
+  transform: rotate(180deg);
+}
+
+.show-more-contacts {
+  // display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  border: 1px solid $firm;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 100%;
+  transition: color .2s ease, background-color .2s ease, opacity .2s ease;
+
+  &:active {
+    background-color: $firm;
+    color: $white;
+  }
+
+  &:focus-visible {
+    background-color: $firm;
+    color: $white;
+  }
+}
+
+.client-modal__label {
+  position: relative;
+  z-index: 15;
+  font-family: 'Opensans', sans-serif;
+}
+
+.client-modal__label-text {
+  position: absolute;
+  z-index: 20;
+  top: 3px;
+  font-size: 14px;
+  color: $txt_grey;
+  transform: none;
+  transition: transform .2s ease, font-size .2s ease;
+}
+
+.client-modal__label-star {
+  color: $firm;
+}
+
+.client-modal__label-text--active {
+  transform: translateY(-15px);
+  font-size: 10px;
+}
+
